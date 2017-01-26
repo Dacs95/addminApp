@@ -114,21 +114,47 @@ export class HomePage {
   				{
   					text:"Save",
   					handler: data =>{
-  						this.users.push({
+  						let newCaso:String = user.agenda.caso;
+  						let newEvento:String = user.agenda.evento; 
+  						let newHis:String = user.agenda.histMed;
+  						let newPos:String = user.agenda.postop;
+  						let newPrep:String = user.agenda.preparacion;
+  						let newVal:String = user.agenda.valoracion;
+
+  						if(data.caso != ''){
+  							newCaso = data.caso;
+  						}
+  						if(data.evento != ''){
+  							newEvento = data.evento;
+  						}
+  						if(data.histMed != ''){
+  							newHis = data.histMed;
+  						}
+  						if(data.postop != ''){
+  							newPos = data.postop;
+  						}
+  						if(data.preparacion != ''){
+  							newPrep = data.preparacion;
+  						}
+  						if(data.valoracion != ''){
+  							newVal = data.valoracion;
+  						}
+
+  						this.users.update(user.$key,{
   							agenda: {
-  								caso: false,
-  								evento: false,
-  								histMed: false,
-  								postop: false,
-  								preparacion: false,
-  								valoracion: false
+  								caso: newCaso,
+  								evento: newEvento,
+  								histMed: newHis,
+  								postop: newPos,
+  								preparacion: newPrep,
+  								valoracion: newVal
   							},
   							datos:{
-  							nombre: data.pacientName,
-  							origen: data.city,
-  							dob: data.dob,
-  							evento: data.evento,
-  							psw: ""
+  							nombre: user.datos.nombre,
+  							origen: user.datos.origen,
+  							dob: user.datos.dob,
+  							evento: user.datos.evento,
+  							psw: user.datos.psw
   							}  							
   						})
   					}
