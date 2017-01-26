@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Hospital Puerta de Hierro</ion-title>
+    <ion-title>Centro Médico Puerta de Hierro</ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click) = "addUser()" >
           <ion-icon name ="add"> </ion-icon>
@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Pacientes Potenciales</h2>
+  <h2>Potencial Patients</h2>
     <ion-list>
       <ion-item *ngFor = "let user of users | async">
       <p>Name: {{user.datos.nombre}}</p>
