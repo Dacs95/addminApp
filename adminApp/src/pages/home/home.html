@@ -14,9 +14,10 @@
   <h2>Pacientes Potenciales</h2>
     <ion-list>
       <ion-item *ngFor = "let user of users | async">
-      <p>Name: {{user.name}}</p>
-      <p>Country: {{user.country}}</p>
-      <p>Sex: {{user.sex}}</p>    
+      <p>Name: {{user.datos.nombre}}</p>
+      <p>Country: {{user.datos.origen}}</p>
+      <p>Day of Birth: {{user.datos.dob}}</p>
+      <p>Medical Procedure: {{user.datos.evento}}</p>    
     </ion-item>
 
   </ion-list>
