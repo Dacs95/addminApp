@@ -75,25 +75,34 @@ export class HomePage {
 
   	editPatient(user){
   		  		let prompt = this.alertCtrl.create({
-  			title: 'Pacient info',
-  			message: 'Edit the pacient information',
+  			title: 'Pacient progress status',
+  			message: 'Update the paciente progress',
   			inputs:[
   				{
-  					name: 'pacientName',
-  					placeholder: user.datos.nombre
-  				},
-  				{
-  					name: 'city',
-  					placeholder: "City"
-  				},
-  				{
-  					name: 'dob',
-  					placeholder: "DD/MM/YY"
+  					name: 'caso',
+  					placeholder: user.agenda.caso
   				},
   				{
   					name: 'evento',
-  					placeholder: "Medical Procedure"
+  					placeholder: user.agenda.evento
+  				},
+  				{
+  					name: 'histMed',
+  					placeholder: user.agenda.histMed
+  				},
+  				{
+  					name: 'postop',
+  					placeholder: user.agenda.postop
+  				},
+  				{
+  					name: 'preparacion',
+  					placeholder: user.agenda.preparacion
+  				},
+  				{
+  					name: 'valoracion',
+  					placeholder: user.agenda.valoracion
   				}
+
   			],
   			buttons: [
   				{
