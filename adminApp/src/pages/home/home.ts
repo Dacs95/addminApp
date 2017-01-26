@@ -49,10 +49,20 @@ export class HomePage {
   					text:"Save",
   					handler: data =>{
   						this.users.push({
+  							agenda: {
+  								caso: false,
+  								evento: false,
+  								histMed: false,
+  								postop: false,
+  								preparacion: false,
+  								valoracion: false
+  							},
+  							datos:{
   							nombre: data.pacientName,
   							origen: data.city,
   							dob: data.dob,
   							evento: data.evento
+  							}  							
   						})
   					}
   				}	
