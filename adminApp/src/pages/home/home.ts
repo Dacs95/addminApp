@@ -166,7 +166,25 @@ export class HomePage {
   	}
 
   	deletePatient(user){
+  		let prompt = this.alertCtrl.create({
+  			title: 'Delete Patient',
+  			buttons:[
+  				{
+  					text:"Cancel",
+  					handler: data => {
+  						console.log("Cancel clicked");
+  					}	
+  				},
+  				{
+  					text:"Delete",
+  					handler: data => {
+  						this.users.remove(user.$key);
+  					}
+  				}
+  			]
 
+  		});
+  		prompt.present();
 
   	}
 
