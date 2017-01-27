@@ -1,17 +1,35 @@
 <ion-header>
   <ion-navbar>
+    
     <ion-title>
-      Contact
+      <ion-icon name="contact"></ion-icon>
+      Profile Information
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+  <ion-list *ngFor = "let admin of admins | async">     
     <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
+      <p>Nombre</p>
+     <ion-label fixed>Name</ion-label>
+     <ion-input  type="text" value ={{admin.nombre}}></ion-input>
     </ion-item>
+
+    <ion-item>
+     <ion-label fixed>Email</ion-label>
+     <ion-input  type="text" value={{admin.correo}}></ion-input>
+    </ion-item>
+
+    <ion-item>
+     <ion-label fixed>Area</ion-label>
+     <ion-input  type="text" value={{admin.area}}></ion-input>
+    </ion-item>
+
+    <ion-item>
+     <ion-label fixed>Password</ion-label>
+      <ion-input type="password" value={{admin.psw}}></ion-input>
+    </ion-item>
+
   </ion-list>
 </ion-content>

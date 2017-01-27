@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
-import {AngularFire, FirebaseListObservable} from 'angularfire2'
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 
 @Component({
@@ -13,7 +13,9 @@ export class HomePage {
 
   	constructor(public navCtrl: NavController, public alertCtrl: AlertController, angFire: AngularFire) {
   		this.users = angFire.database.list('/users');
-		  
+
+		//const users$ : FirebaseListObservable<any> = angFire.database.list('/users/RCaaNtxzs7QVlwPsASrXFYSelCD2');
+		//users$.subscribe(console.log);
 	
   	}
 
