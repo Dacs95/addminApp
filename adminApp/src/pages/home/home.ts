@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {EditPage} from '../edit/edit';
 
 
 @Component({
@@ -95,97 +96,10 @@ export class HomePage {
   		prompt.present();
   	}
 
-  	editPatient(user){
-  		  		let prompt = this.alertCtrl.create({
-  			title: 'Pacient progress status',
-  			message: 'Update the paciente progress',
-  			inputs:[
-  				{
-  					name: 'caso',
-  					placeholder: user.agenda.caso
-  				},
-  				{
-  					name: 'evento',
-  					placeholder: user.agenda.evento
-  				},
-  				{
-  					name: 'histMed',
-  					placeholder: user.agenda.histMed
-  				},
-  				{
-  					name: 'postop',
-  					placeholder: user.agenda.postop
-  				},
-  				{
-  					name: 'preparacion',
-  					placeholder: user.agenda.preparacion
-  				},
-  				{
-  					name: 'valoracion',
-  					placeholder: user.agenda.valoracion
-  				}
+	nextPageEdit(user){
+		this.navCtrl.push(EditPage);
+	}
 
-  			],
-  			buttons: [
-  				{
-  					text:"Cancel",
-  					handler: data => {
-  						console.log("Cancel clicked");
-  					}
-  				},
-  				{
-  					text:"Save",
-  					handler: data =>{
-  						let newCaso:String = user.agenda.caso;
-  						let newEvento:String = user.agenda.evento; 
-  						let newHis:String = user.agenda.histMed;
-  						let newPos:String = user.agenda.postop;
-  						let newPrep:String = user.agenda.preparacion;
-  						let newVal:String = user.agenda.valoracion;
-
-  						if(data.caso != ''){
-  							newCaso = data.caso;
-  						}
-  						if(data.evento != ''){
-  							newEvento = data.evento;
-  						}
-  						if(data.histMed != ''){
-  							newHis = data.histMed;
-  						}
-  						if(data.postop != ''){
-  							newPos = data.postop;
-  						}
-  						if(data.preparacion != ''){
-  							newPrep = data.preparacion;
-  						}
-  						if(data.valoracion != ''){
-  							newVal = data.valoracion;
-  						}
-
-  						this.users.update(user.$key,{
-  							agenda: {
-  								caso: newCaso,
-  								evento: newEvento,
-  								histMed: newHis,
-  								postop: newPos,
-  								preparacion: newPrep,
-  								valoracion: newVal
-  							},
-  							datos:{
-  							nombre: user.datos.nombre,
-  							origen: user.datos.origen,
-  							dob: user.datos.dob,
-  							evento: user.datos.evento,
-  							psw: user.datos.psw
-  							}  							
-  						})
-  					}
-  				}	
-  				
-  			]
-  		});
-  		prompt.present();
-  	}
 
   	deletePatient(user){
   		let prompt = this.alertCtrl.create({
