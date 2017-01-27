@@ -13,6 +13,7 @@ export class HomePage {
 
   	constructor(public navCtrl: NavController, public alertCtrl: AlertController, angFire: AngularFire) {
   		this.users = angFire.database.list('/users');
+		  
 	
   	}
 
@@ -50,19 +51,38 @@ export class HomePage {
   					handler: data =>{
   						this.users.push({
   							agenda: {
-  								caso: false,
-  								evento: false,
-  								histMed: false,
-  								postop: false,
-  								preparacion: false,
-  								valoracion: false
+  								caso:{
+									  mensaje:"",
+									  status:"false"
+								  },
+  								evento: {
+									  doctor:"",
+									  cirugia:""
+								  },
+								  historial: {
+									  status: "false"
+								  },
+								  postop: {
+									  receta:"",
+									  recomendaciones: ""
+								  },
+								  preparacion: {
+									  fechaOficial:"",
+									  recomendaciones:""
+								  },
+  								validacion:{
+									  admitido:"No",
+									  observaciones:"",
+									  status:"false"
+								  }
   							},
   							datos:{
   							nombre: data.pacientName,
   							origen: data.city,
   							dob: data.dob,
   							evento: data.evento,
-  							psw: ""
+  							psw: "",
+							email:""
   							}  							
   						})
   					}
@@ -176,7 +196,7 @@ export class HomePage {
   					}	
   				},
   				{
-  					text:"Delete",
+  					text:"Delete Patient",
   					handler: data => {
   						this.users.remove(user.$key);
   					}
@@ -187,5 +207,41 @@ export class HomePage {
   		prompt.present();
 
   	}
+
+	searchUser(){
+		let prompt = this.alertCtrl.create({
+			title:'Search',
+			message:'Search by Name or Speciality',
+			inputs:[
+				{
+					name:'nombre',
+					placeholder: "Name"
+				},
+				{
+					name:'area',
+					placeholder: "Speciality"
+				}
+
+			],
+			buttons:[
+				{
+  					text:"Cancel",
+  					handler: data => {
+  						console.log("Cancel clicked");
+  					}	
+  				},
+  				{
+  					text:"Search",
+  					handler:data =>{
+						this.users.subscribe(console.log); 				  
+
+  					}
+  				}
+
+			]
+
+  		});
+		  prompt.present();
+	}
 
 }

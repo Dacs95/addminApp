@@ -17,9 +17,9 @@
 	<ion-list>
 		<ion-item-sliding *ngFor = "let user of users | async">
 			<ion-item >
-				<p>Name: {{user.name}}</p>
+				<p>Name: {{user.nombre}}</p>
 				<p>Area: {{user.area}}</p>		
-				<p>Cedula: {{user.cedula}}</p>			
+				<p>License: {{user.cedula}}</p>			
 			</ion-item>
 			<ion-item-options side="right">
 				<button ion-button color= "secondary" (click) = editDoctor(user)>

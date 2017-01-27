@@ -1,10 +1,15 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar inset>
     <ion-title>Centro Médico Puerta de Hierro</ion-title>
+    
     <ion-buttons end>
+        <button ion-button icon-only (click) = "searchUser()" >
+          <ion-icon name ="search"> </ion-icon>
+        </button>
         <button ion-button icon-only (click) = "addUser()" >
           <ion-icon name ="add"> </ion-icon>
         </button>
+
       </ion-buttons>
 
   </ion-navbar>
@@ -12,6 +17,7 @@
 
 <ion-content padding>
   <h2>Potencial Patients</h2>
+
     <ion-list>
        <ion-item-sliding *ngFor = "let user of users | async"> 
         <ion-item>
